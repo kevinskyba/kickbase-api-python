@@ -15,6 +15,9 @@ kickbase = Kickbase()
 user, leagues = kickbase.login("username", "password")
 ```
 
+## Docs
+The docs for this library can be found [here](https://kevinskyba.github.io/kickbase-api-python/).
+
 ## API
 This library is based on [Kickbase API Doc](https://github.com/kevinskyba/kickbase-api-doc).
 
