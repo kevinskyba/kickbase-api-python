@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='Kickbase_API',
     version='0.0.1',
-    packages=['Kickbase_API'],
+    packages=['kickbase_api'],
     url='https://github.com/kevinskyba/kickbase-api-python',
     license='MIT',
     author='kevinskyba',
