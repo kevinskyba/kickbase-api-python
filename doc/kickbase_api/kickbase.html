@@ -1,0 +1,1552 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.4" />
+<title>kickbase_api.kickbase API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>kickbase_api.kickbase</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from datetime import datetime, timedelta
+from typing import Union
+
+import requests
+import json
+
+from kickbase_api.exceptions import KickbaseLoginException, KickbaseException
+from kickbase_api.models._transforms import parse_date
+from kickbase_api.models.feed_item import FeedItem
+from kickbase_api.models.feed_item_comment import FeedItemComment
+from kickbase_api.models.league_data import LeagueData
+from kickbase_api.models.league_info import LeagueInfo
+from kickbase_api.models.league_me import LeagueMe
+from kickbase_api.models.league_user_data import LeagueUserData
+from kickbase_api.models.league_user_profile import LeagueUserProfile
+from kickbase_api.models.league_user_stats import LeagueUserStats
+from kickbase_api.models.lineup import LineUp
+from kickbase_api.models.market import Market
+from kickbase_api.models.market_player import MarketPlayer
+from kickbase_api.models.player import Player
+from kickbase_api.models.response.league_stats_response import LeagueStatsResponse
+from kickbase_api.models.user import User
+
+
+class Kickbase:
+    base_url: str = None
+    token: str = None
+    token_expire: datetime = None
+
+    _username: str = None
+    _password: str = None
+
+    def __init__(self, base_url: str = &#39;https://api.kickbase.com&#39;):
+        self.base_url = base_url
+
+    def login(self, username: str, password: str) -&gt; (User, [LeagueData]):
+        data = {
+            &#34;email&#34;: username,
+            &#34;password&#34;: password,
+            &#34;ext&#34;: False
+        }
+
+        r = self._do_post(&#34;/user/login&#34;, data, False)
+
+        if r.status_code == 200:
+            j = r.json()
+            self.token = j[&#34;token&#34;]
+            self.token_expire = parse_date(j[&#34;tokenExp&#34;])
+
+            self._username = username
+            self._password = password
+
+            user = User(j[&#34;user&#34;])
+            league_data = [LeagueData(d) for d in j[&#34;leagues&#34;]]
+            return user, league_data
+
+        elif r.status_code == 401:
+            raise KickbaseLoginException()
+        else:
+            raise KickbaseException()
+
+    def _is_token_valid(self):
+        if self.token is None or self.token_expire is None:
+            return False
+        return self.token_expire &gt; datetime.now() - timedelta(days=1)
+
+    def leagues(self) -&gt; [LeagueData]:
+        r =  self._do_get(&#34;/leagues/&#34;, True)
+
+        if r.status_code == 200:
+            j = r.json()
+            return [LeagueData(d) for d in j[&#34;leagues&#34;]]
+        else:
+            raise KickbaseException()
+
+    def league_me(self, league: Union[str, LeagueData]) -&gt; LeagueMe:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/me&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return LeagueMe(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_info(self, league: Union[str, LeagueData]) -&gt; LeagueInfo:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/info&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return LeagueInfo(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_stats(self, league: Union[str, LeagueData]) -&gt; LeagueStatsResponse:
+        league_id = self._get_league_id(league)
+        
+        r = self._do_get(&#34;/leagues/{}/stats&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return LeagueStatsResponse(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_users(self, league: Union[str, LeagueData]) -&gt; [LeagueUserData]:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/users&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return [LeagueUserData(d) for d in r.json()[&#34;users&#34;]]
+        else:
+            raise KickbaseException()
+
+    def league_user_stats(self, league: Union[str, LeagueData], user: Union[str, User]) -&gt; LeagueUserStats:
+        league_id = self._get_league_id(league)
+        user_id = self._get_user_id(user)
+
+        r = self._do_get(&#34;/leagues/{}/users/{}/stats&#34;.format(league_id, user_id), True)
+
+        if r.status_code == 200:
+            return LeagueUserStats(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_user_profile(self, league: Union[str, LeagueData], user: Union[str, User]) -&gt; LeagueUserProfile:
+        league_id = self._get_league_id(league)
+        user_id = self._get_user_id(user)
+        
+        r = self._do_get(&#34;/leagues/{}/users/{}/profile&#34;.format(league_id, user_id), True)
+
+        if r.status_code == 200:
+            return LeagueUserProfile(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_feed(self, start_index: int, league: Union[str, LeagueData]) -&gt; [FeedItem]:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/feed?start={}&#34;.format(league_id, start_index), True)
+
+        if r.status_code == 200:
+            return [FeedItem(v) for v in r.json()[&#34;items&#34;]]
+        else:
+            raise KickbaseException()
+
+    def post_feed_item(self, comment: str, league: Union[str, LeagueData]):
+        league_id = self._get_league_id(league)
+
+        data = {
+            &#34;comment&#34;: comment
+        }
+
+        r = self._do_post(&#34;/leagues/{}/feed&#34;.format(league_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def league_feed_comments(self, league: Union[str, LeagueData], feed_item: Union[str, FeedItem]) -&gt; [FeedItemComment]:
+        league_id = self._get_league_id(league)
+        feed_item_id = self._get_feed_item_id(feed_item)
+
+        r = self._do_get(&#34;/leagues/{}/feed/{}/comments&#34;.format(league_id, feed_item_id), True)
+
+        if r.status_code == 200:
+            return [FeedItemComment(v) for v in r.json()[&#34;comments&#34;]]
+        else:
+            raise KickbaseException()
+
+    def post_feed_comment(self, comment: str, league: Union[str, LeagueData], feed_item: Union[str, FeedItem]):
+        league_id = self._get_league_id(league)
+        feed_item_id = self._get_feed_item_id(feed_item)
+
+        data = {
+            &#34;comment&#34;: comment
+        }
+
+        r = self._do_post(&#34;/leagues/{}/feed/{}/comments&#34;.format(league_id, feed_item_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def league_user_players(self, league: Union[str, LeagueData], user: Union[str, User], match_day: int = 0) -&gt; [
+        Player]:
+        league_id = self._get_league_id(league)
+        user_id = self._get_user_id(user)
+
+        r = self._do_get(&#34;/leagues/{}/users/{}/players?matchDay={}&#34;.format(league_id, user_id, match_day), True)
+
+        if r.status_code == 200:
+            return [Player(v) for v in r.json()[&#34;players&#34;]]
+        else:
+            raise KickbaseException()
+
+    def search_player(self, search_query: str) -&gt; [Player]:
+        r = self._do_get(&#34;/competition/search?t={}&#34;.format(search_query))
+
+        if r.status_code == 200:
+            return [Player(v) for v in r.json()[&#34;p&#34;]]
+        else:
+            raise KickbaseException()
+
+    def team_players(self, team_id: str) -&gt; [Player]:
+        r = self._do_get(&#34;/competition/teams/{}/players&#34;.format(team_id))
+
+        if r.status_code == 200:
+            return [Player(v) for v in r.json()[&#34;p&#34;]]
+        else:
+            raise KickbaseException()
+
+    def top_25_players(self) -&gt; [Player]:
+        r = self._do_get(&#34;/competition/best?position=0&#34;)
+
+        if r.status_code == 200:
+            return [Player(v) for v in r.json()[&#34;p&#34;]]
+        else:
+            raise KickbaseException()
+
+    def line_up(self, league: Union[str, LeagueData]) -&gt; LineUp:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/lineup&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return LineUp(r.json())
+        else:
+            raise KickbaseException()
+
+    def set_line_up(self, line_up: LineUp, league: Union[str, LeagueData]) -&gt; LineUp:
+        league_id = self._get_league_id(league)
+
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        data = {
+            &#34;type&#34;: line_up.type,
+            &#34;players&#34;: line_up.players
+        }
+
+        r = self._do_post(&#34;/leagues/{}/lineup&#34;.format(league_id), data, True)
+
+        if r.status_code == 200:
+            return LineUp(r.json())
+        else:
+            raise KickbaseException()
+
+    def market(self, league: Union[str, LeagueData]) -&gt; Market:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/market&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return Market(r.json())
+        else:
+            raise KickbaseException()
+
+    def add_to_market(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        data = {
+            &#34;playerId&#34;: player_id,
+            &#34;price&#34;: price
+        }
+
+        r = self._do_post(&#34;/leagues/{}/market&#34;.format(league_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def remove_from_market(self, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        r = self._do_delete(&#34;/leagues/{}/market/{}&#34;.format(league_id, player_id), True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def update_price(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        data = {
+            &#34;price&#34;: price
+        }
+
+        r = self._do_put(&#34;/leagues/{}/market/{}&#34;.format(league_id, player_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def make_offer(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        data = {
+            &#34;price&#34;: price
+        }
+
+        r = self._do_post(&#34;/leagues/{}/market/{}/offers&#34;.format(league_id, player_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def remove_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        r = self._do_delete(&#34;/leagues/{}/market/{}/offers/{}&#34;.format(league_id, player_id, offer_id), True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def accept_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        r = self._do_post(&#34;/leagues/{}/market/{}/offers/{}/accept&#34;.format(league_id, player_id, offer_id), {}, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def decline_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        r = self._do_post(&#34;/leagues/{}/market/{}/offers/{}/decline&#34;.format(league_id, player_id, offer_id), {}, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def _get_league_id(self, league: any):
+        if isinstance(league, str):
+            return league
+        if isinstance(league, LeagueData):
+            return league.id
+        raise KickbaseException(&#34;league must be either type of str or LeagueData&#34;)
+
+    def _get_player_id(self, player: any):
+        if isinstance(player, str):
+            return player
+        if isinstance(player, Player):
+            return player.id
+        if isinstance(player, MarketPlayer):
+            return player.id
+        raise KickbaseException(&#34;player must be either type of str, Player or MarketPlayer&#34;)
+
+    def _get_user_id(self, user: any):
+        if isinstance(user, str):
+            return user
+        if isinstance(user, User):
+            return user.id
+        raise KickbaseException(&#34;user must be either type of str or User&#34;)
+    
+    def _get_feed_item_id(self, feed_item: any):
+        if isinstance(feed_item, str):
+            return feed_item
+        if isinstance(feed_item, FeedItem):
+            return feed_item.id
+        raise KickbaseException(&#34;feed_item must be either type of str or FeedItem&#34;)
+
+    def _url_for_endpoint(self, endpoint: str):
+        return self.base_url + endpoint
+
+    def _auth_cookie(self):
+        return &#34;kkstrauth={}&#34;.format(self.token)
+
+    def _do_get(self, endpoint: str, authenticated: bool = False):
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        headers = {
+            &#34;Content-Type&#34;: &#34;application/json&#34;,
+            &#34;Accept&#34;: &#34;application/json&#34;
+        }
+        if authenticated:
+            headers[&#34;Cookie&#34;] = self._auth_cookie()
+
+        return requests.get(self._url_for_endpoint(endpoint), headers=headers)
+
+    def _do_post(self, endpoint: str, data: dict, authenticated: bool = False):
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        headers = {
+            &#34;Content-Type&#34;: &#34;application/json&#34;,
+            &#34;Accept&#34;: &#34;application/json&#34;
+        }
+        if authenticated:
+            headers[&#34;Cookie&#34;] = self._auth_cookie()
+
+        return requests.post(self._url_for_endpoint(endpoint), data=json.dumps(data), headers=headers)
+
+    def _do_put(self, endpoint: str, data: dict, authenticated: bool = False):
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        headers = {
+            &#34;Content-Type&#34;: &#34;application/json&#34;,
+            &#34;Accept&#34;: &#34;application/json&#34;
+        }
+        if authenticated:
+            headers[&#34;Cookie&#34;] = self._auth_cookie()
+
+        return requests.put(self._url_for_endpoint(endpoint), data=json.dumps(data), headers=headers)
+
+    def _do_delete(self, endpoint: str, authenticated: bool = False):
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        headers = {
+            &#34;Content-Type&#34;: &#34;application/json&#34;,
+            &#34;Accept&#34;: &#34;application/json&#34;
+        }
+        if authenticated:
+            headers[&#34;Cookie&#34;] = self._auth_cookie()
+
+        return requests.delete(self._url_for_endpoint(endpoint), headers=headers)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="kickbase_api.kickbase.Kickbase"><code class="flex name class">
+<span>class <span class="ident">Kickbase</span></span>
+<span>(</span><span>base_url: str = 'https://api.kickbase.com')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Kickbase:
+    base_url: str = None
+    token: str = None
+    token_expire: datetime = None
+
+    _username: str = None
+    _password: str = None
+
+    def __init__(self, base_url: str = &#39;https://api.kickbase.com&#39;):
+        self.base_url = base_url
+
+    def login(self, username: str, password: str) -&gt; (User, [LeagueData]):
+        data = {
+            &#34;email&#34;: username,
+            &#34;password&#34;: password,
+            &#34;ext&#34;: False
+        }
+
+        r = self._do_post(&#34;/user/login&#34;, data, False)
+
+        if r.status_code == 200:
+            j = r.json()
+            self.token = j[&#34;token&#34;]
+            self.token_expire = parse_date(j[&#34;tokenExp&#34;])
+
+            self._username = username
+            self._password = password
+
+            user = User(j[&#34;user&#34;])
+            league_data = [LeagueData(d) for d in j[&#34;leagues&#34;]]
+            return user, league_data
+
+        elif r.status_code == 401:
+            raise KickbaseLoginException()
+        else:
+            raise KickbaseException()
+
+    def _is_token_valid(self):
+        if self.token is None or self.token_expire is None:
+            return False
+        return self.token_expire &gt; datetime.now() - timedelta(days=1)
+
+    def leagues(self) -&gt; [LeagueData]:
+        r =  self._do_get(&#34;/leagues/&#34;, True)
+
+        if r.status_code == 200:
+            j = r.json()
+            return [LeagueData(d) for d in j[&#34;leagues&#34;]]
+        else:
+            raise KickbaseException()
+
+    def league_me(self, league: Union[str, LeagueData]) -&gt; LeagueMe:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/me&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return LeagueMe(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_info(self, league: Union[str, LeagueData]) -&gt; LeagueInfo:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/info&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return LeagueInfo(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_stats(self, league: Union[str, LeagueData]) -&gt; LeagueStatsResponse:
+        league_id = self._get_league_id(league)
+        
+        r = self._do_get(&#34;/leagues/{}/stats&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return LeagueStatsResponse(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_users(self, league: Union[str, LeagueData]) -&gt; [LeagueUserData]:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/users&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return [LeagueUserData(d) for d in r.json()[&#34;users&#34;]]
+        else:
+            raise KickbaseException()
+
+    def league_user_stats(self, league: Union[str, LeagueData], user: Union[str, User]) -&gt; LeagueUserStats:
+        league_id = self._get_league_id(league)
+        user_id = self._get_user_id(user)
+
+        r = self._do_get(&#34;/leagues/{}/users/{}/stats&#34;.format(league_id, user_id), True)
+
+        if r.status_code == 200:
+            return LeagueUserStats(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_user_profile(self, league: Union[str, LeagueData], user: Union[str, User]) -&gt; LeagueUserProfile:
+        league_id = self._get_league_id(league)
+        user_id = self._get_user_id(user)
+        
+        r = self._do_get(&#34;/leagues/{}/users/{}/profile&#34;.format(league_id, user_id), True)
+
+        if r.status_code == 200:
+            return LeagueUserProfile(r.json())
+        else:
+            raise KickbaseException()
+
+    def league_feed(self, start_index: int, league: Union[str, LeagueData]) -&gt; [FeedItem]:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/feed?start={}&#34;.format(league_id, start_index), True)
+
+        if r.status_code == 200:
+            return [FeedItem(v) for v in r.json()[&#34;items&#34;]]
+        else:
+            raise KickbaseException()
+
+    def post_feed_item(self, comment: str, league: Union[str, LeagueData]):
+        league_id = self._get_league_id(league)
+
+        data = {
+            &#34;comment&#34;: comment
+        }
+
+        r = self._do_post(&#34;/leagues/{}/feed&#34;.format(league_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def league_feed_comments(self, league: Union[str, LeagueData], feed_item: Union[str, FeedItem]) -&gt; [FeedItemComment]:
+        league_id = self._get_league_id(league)
+        feed_item_id = self._get_feed_item_id(feed_item)
+
+        r = self._do_get(&#34;/leagues/{}/feed/{}/comments&#34;.format(league_id, feed_item_id), True)
+
+        if r.status_code == 200:
+            return [FeedItemComment(v) for v in r.json()[&#34;comments&#34;]]
+        else:
+            raise KickbaseException()
+
+    def post_feed_comment(self, comment: str, league: Union[str, LeagueData], feed_item: Union[str, FeedItem]):
+        league_id = self._get_league_id(league)
+        feed_item_id = self._get_feed_item_id(feed_item)
+
+        data = {
+            &#34;comment&#34;: comment
+        }
+
+        r = self._do_post(&#34;/leagues/{}/feed/{}/comments&#34;.format(league_id, feed_item_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def league_user_players(self, league: Union[str, LeagueData], user: Union[str, User], match_day: int = 0) -&gt; [
+        Player]:
+        league_id = self._get_league_id(league)
+        user_id = self._get_user_id(user)
+
+        r = self._do_get(&#34;/leagues/{}/users/{}/players?matchDay={}&#34;.format(league_id, user_id, match_day), True)
+
+        if r.status_code == 200:
+            return [Player(v) for v in r.json()[&#34;players&#34;]]
+        else:
+            raise KickbaseException()
+
+    def search_player(self, search_query: str) -&gt; [Player]:
+        r = self._do_get(&#34;/competition/search?t={}&#34;.format(search_query))
+
+        if r.status_code == 200:
+            return [Player(v) for v in r.json()[&#34;p&#34;]]
+        else:
+            raise KickbaseException()
+
+    def team_players(self, team_id: str) -&gt; [Player]:
+        r = self._do_get(&#34;/competition/teams/{}/players&#34;.format(team_id))
+
+        if r.status_code == 200:
+            return [Player(v) for v in r.json()[&#34;p&#34;]]
+        else:
+            raise KickbaseException()
+
+    def top_25_players(self) -&gt; [Player]:
+        r = self._do_get(&#34;/competition/best?position=0&#34;)
+
+        if r.status_code == 200:
+            return [Player(v) for v in r.json()[&#34;p&#34;]]
+        else:
+            raise KickbaseException()
+
+    def line_up(self, league: Union[str, LeagueData]) -&gt; LineUp:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/lineup&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return LineUp(r.json())
+        else:
+            raise KickbaseException()
+
+    def set_line_up(self, line_up: LineUp, league: Union[str, LeagueData]) -&gt; LineUp:
+        league_id = self._get_league_id(league)
+
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        data = {
+            &#34;type&#34;: line_up.type,
+            &#34;players&#34;: line_up.players
+        }
+
+        r = self._do_post(&#34;/leagues/{}/lineup&#34;.format(league_id), data, True)
+
+        if r.status_code == 200:
+            return LineUp(r.json())
+        else:
+            raise KickbaseException()
+
+    def market(self, league: Union[str, LeagueData]) -&gt; Market:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get(&#34;/leagues/{}/market&#34;.format(league_id), True)
+
+        if r.status_code == 200:
+            return Market(r.json())
+        else:
+            raise KickbaseException()
+
+    def add_to_market(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        data = {
+            &#34;playerId&#34;: player_id,
+            &#34;price&#34;: price
+        }
+
+        r = self._do_post(&#34;/leagues/{}/market&#34;.format(league_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def remove_from_market(self, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        r = self._do_delete(&#34;/leagues/{}/market/{}&#34;.format(league_id, player_id), True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def update_price(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        data = {
+            &#34;price&#34;: price
+        }
+
+        r = self._do_put(&#34;/leagues/{}/market/{}&#34;.format(league_id, player_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def make_offer(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        data = {
+            &#34;price&#34;: price
+        }
+
+        r = self._do_post(&#34;/leagues/{}/market/{}/offers&#34;.format(league_id, player_id), data, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def remove_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        r = self._do_delete(&#34;/leagues/{}/market/{}/offers/{}&#34;.format(league_id, player_id, offer_id), True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def accept_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        r = self._do_post(&#34;/leagues/{}/market/{}/offers/{}/accept&#34;.format(league_id, player_id, offer_id), {}, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def decline_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+        player_id = self._get_player_id(player)
+        league_id = self._get_league_id(league)
+
+        r = self._do_post(&#34;/leagues/{}/market/{}/offers/{}/decline&#34;.format(league_id, player_id, offer_id), {}, True)
+
+        if r.status_code == 200:
+            return
+        else:
+            raise KickbaseException()
+
+    def _get_league_id(self, league: any):
+        if isinstance(league, str):
+            return league
+        if isinstance(league, LeagueData):
+            return league.id
+        raise KickbaseException(&#34;league must be either type of str or LeagueData&#34;)
+
+    def _get_player_id(self, player: any):
+        if isinstance(player, str):
+            return player
+        if isinstance(player, Player):
+            return player.id
+        if isinstance(player, MarketPlayer):
+            return player.id
+        raise KickbaseException(&#34;player must be either type of str, Player or MarketPlayer&#34;)
+
+    def _get_user_id(self, user: any):
+        if isinstance(user, str):
+            return user
+        if isinstance(user, User):
+            return user.id
+        raise KickbaseException(&#34;user must be either type of str or User&#34;)
+    
+    def _get_feed_item_id(self, feed_item: any):
+        if isinstance(feed_item, str):
+            return feed_item
+        if isinstance(feed_item, FeedItem):
+            return feed_item.id
+        raise KickbaseException(&#34;feed_item must be either type of str or FeedItem&#34;)
+
+    def _url_for_endpoint(self, endpoint: str):
+        return self.base_url + endpoint
+
+    def _auth_cookie(self):
+        return &#34;kkstrauth={}&#34;.format(self.token)
+
+    def _do_get(self, endpoint: str, authenticated: bool = False):
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        headers = {
+            &#34;Content-Type&#34;: &#34;application/json&#34;,
+            &#34;Accept&#34;: &#34;application/json&#34;
+        }
+        if authenticated:
+            headers[&#34;Cookie&#34;] = self._auth_cookie()
+
+        return requests.get(self._url_for_endpoint(endpoint), headers=headers)
+
+    def _do_post(self, endpoint: str, data: dict, authenticated: bool = False):
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        headers = {
+            &#34;Content-Type&#34;: &#34;application/json&#34;,
+            &#34;Accept&#34;: &#34;application/json&#34;
+        }
+        if authenticated:
+            headers[&#34;Cookie&#34;] = self._auth_cookie()
+
+        return requests.post(self._url_for_endpoint(endpoint), data=json.dumps(data), headers=headers)
+
+    def _do_put(self, endpoint: str, data: dict, authenticated: bool = False):
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        headers = {
+            &#34;Content-Type&#34;: &#34;application/json&#34;,
+            &#34;Accept&#34;: &#34;application/json&#34;
+        }
+        if authenticated:
+            headers[&#34;Cookie&#34;] = self._auth_cookie()
+
+        return requests.put(self._url_for_endpoint(endpoint), data=json.dumps(data), headers=headers)
+
+    def _do_delete(self, endpoint: str, authenticated: bool = False):
+        if not self._is_token_valid:
+            self.login(self._username, self._password)
+
+        headers = {
+            &#34;Content-Type&#34;: &#34;application/json&#34;,
+            &#34;Accept&#34;: &#34;application/json&#34;
+        }
+        if authenticated:
+            headers[&#34;Cookie&#34;] = self._auth_cookie()
+
+        return requests.delete(self._url_for_endpoint(endpoint), headers=headers)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="kickbase_api.kickbase.Kickbase.base_url"><code class="name">var <span class="ident">base_url</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.token"><code class="name">var <span class="ident">token</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.token_expire"><code class="name">var <span class="ident">token_expire</span> : datetime.datetime</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="kickbase_api.kickbase.Kickbase.accept_offer"><code class="name flex">
+<span>def <span class="ident">accept_offer</span></span>(<span>self, offer_id: str, player: Union[str, <a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>, <a title="kickbase_api.models.market_player.MarketPlayer" href="models/market_player.html#kickbase_api.models.market_player.MarketPlayer">MarketPlayer</a>], league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def accept_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+    player_id = self._get_player_id(player)
+    league_id = self._get_league_id(league)
+
+    r = self._do_post(&#34;/leagues/{}/market/{}/offers/{}/accept&#34;.format(league_id, player_id, offer_id), {}, True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.add_to_market"><code class="name flex">
+<span>def <span class="ident">add_to_market</span></span>(<span>self, price: int, player: Union[str, <a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>, <a title="kickbase_api.models.market_player.MarketPlayer" href="models/market_player.html#kickbase_api.models.market_player.MarketPlayer">MarketPlayer</a>], league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_to_market(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+    player_id = self._get_player_id(player)
+    league_id = self._get_league_id(league)
+
+    data = {
+        &#34;playerId&#34;: player_id,
+        &#34;price&#34;: price
+    }
+
+    r = self._do_post(&#34;/leagues/{}/market&#34;.format(league_id), data, True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.decline_offer"><code class="name flex">
+<span>def <span class="ident">decline_offer</span></span>(<span>self, offer_id: str, player: Union[str, <a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>, <a title="kickbase_api.models.market_player.MarketPlayer" href="models/market_player.html#kickbase_api.models.market_player.MarketPlayer">MarketPlayer</a>], league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decline_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+    player_id = self._get_player_id(player)
+    league_id = self._get_league_id(league)
+
+    r = self._do_post(&#34;/leagues/{}/market/{}/offers/{}/decline&#34;.format(league_id, player_id, offer_id), {}, True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_feed"><code class="name flex">
+<span>def <span class="ident">league_feed</span></span>(<span>self, start_index: int, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>]) ‑> [<class '<a title="kickbase_api.models.feed_item.FeedItem" href="models/feed_item.html#kickbase_api.models.feed_item.FeedItem">FeedItem</a>'>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_feed(self, start_index: int, league: Union[str, LeagueData]) -&gt; [FeedItem]:
+    league_id = self._get_league_id(league)
+
+    r = self._do_get(&#34;/leagues/{}/feed?start={}&#34;.format(league_id, start_index), True)
+
+    if r.status_code == 200:
+        return [FeedItem(v) for v in r.json()[&#34;items&#34;]]
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_feed_comments"><code class="name flex">
+<span>def <span class="ident">league_feed_comments</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>], feed_item: Union[str, <a title="kickbase_api.models.feed_item.FeedItem" href="models/feed_item.html#kickbase_api.models.feed_item.FeedItem">FeedItem</a>]) ‑> [<class '<a title="kickbase_api.models.feed_item_comment.FeedItemComment" href="models/feed_item_comment.html#kickbase_api.models.feed_item_comment.FeedItemComment">FeedItemComment</a>'>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_feed_comments(self, league: Union[str, LeagueData], feed_item: Union[str, FeedItem]) -&gt; [FeedItemComment]:
+    league_id = self._get_league_id(league)
+    feed_item_id = self._get_feed_item_id(feed_item)
+
+    r = self._do_get(&#34;/leagues/{}/feed/{}/comments&#34;.format(league_id, feed_item_id), True)
+
+    if r.status_code == 200:
+        return [FeedItemComment(v) for v in r.json()[&#34;comments&#34;]]
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_info"><code class="name flex">
+<span>def <span class="ident">league_info</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>]) ‑> <a title="kickbase_api.models.league_info.LeagueInfo" href="models/league_info.html#kickbase_api.models.league_info.LeagueInfo">LeagueInfo</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_info(self, league: Union[str, LeagueData]) -&gt; LeagueInfo:
+    league_id = self._get_league_id(league)
+
+    r = self._do_get(&#34;/leagues/{}/info&#34;.format(league_id), True)
+
+    if r.status_code == 200:
+        return LeagueInfo(r.json())
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_me"><code class="name flex">
+<span>def <span class="ident">league_me</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>]) ‑> <a title="kickbase_api.models.league_me.LeagueMe" href="models/league_me.html#kickbase_api.models.league_me.LeagueMe">LeagueMe</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_me(self, league: Union[str, LeagueData]) -&gt; LeagueMe:
+    league_id = self._get_league_id(league)
+
+    r = self._do_get(&#34;/leagues/{}/me&#34;.format(league_id), True)
+
+    if r.status_code == 200:
+        return LeagueMe(r.json())
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_stats"><code class="name flex">
+<span>def <span class="ident">league_stats</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>]) ‑> <a title="kickbase_api.models.response.league_stats_response.LeagueStatsResponse" href="models/response/league_stats_response.html#kickbase_api.models.response.league_stats_response.LeagueStatsResponse">LeagueStatsResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_stats(self, league: Union[str, LeagueData]) -&gt; LeagueStatsResponse:
+    league_id = self._get_league_id(league)
+    
+    r = self._do_get(&#34;/leagues/{}/stats&#34;.format(league_id), True)
+
+    if r.status_code == 200:
+        return LeagueStatsResponse(r.json())
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_user_players"><code class="name flex">
+<span>def <span class="ident">league_user_players</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>], user: Union[str, <a title="kickbase_api.models.user.User" href="models/user.html#kickbase_api.models.user.User">User</a>], match_day: int = 0) ‑> [<class '<a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>'>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_user_players(self, league: Union[str, LeagueData], user: Union[str, User], match_day: int = 0) -&gt; [
+    Player]:
+    league_id = self._get_league_id(league)
+    user_id = self._get_user_id(user)
+
+    r = self._do_get(&#34;/leagues/{}/users/{}/players?matchDay={}&#34;.format(league_id, user_id, match_day), True)
+
+    if r.status_code == 200:
+        return [Player(v) for v in r.json()[&#34;players&#34;]]
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_user_profile"><code class="name flex">
+<span>def <span class="ident">league_user_profile</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>], user: Union[str, <a title="kickbase_api.models.user.User" href="models/user.html#kickbase_api.models.user.User">User</a>]) ‑> <a title="kickbase_api.models.league_user_profile.LeagueUserProfile" href="models/league_user_profile.html#kickbase_api.models.league_user_profile.LeagueUserProfile">LeagueUserProfile</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_user_profile(self, league: Union[str, LeagueData], user: Union[str, User]) -&gt; LeagueUserProfile:
+    league_id = self._get_league_id(league)
+    user_id = self._get_user_id(user)
+    
+    r = self._do_get(&#34;/leagues/{}/users/{}/profile&#34;.format(league_id, user_id), True)
+
+    if r.status_code == 200:
+        return LeagueUserProfile(r.json())
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_user_stats"><code class="name flex">
+<span>def <span class="ident">league_user_stats</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>], user: Union[str, <a title="kickbase_api.models.user.User" href="models/user.html#kickbase_api.models.user.User">User</a>]) ‑> <a title="kickbase_api.models.league_user_stats.LeagueUserStats" href="models/league_user_stats.html#kickbase_api.models.league_user_stats.LeagueUserStats">LeagueUserStats</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_user_stats(self, league: Union[str, LeagueData], user: Union[str, User]) -&gt; LeagueUserStats:
+    league_id = self._get_league_id(league)
+    user_id = self._get_user_id(user)
+
+    r = self._do_get(&#34;/leagues/{}/users/{}/stats&#34;.format(league_id, user_id), True)
+
+    if r.status_code == 200:
+        return LeagueUserStats(r.json())
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.league_users"><code class="name flex">
+<span>def <span class="ident">league_users</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>]) ‑> [<class '<a title="kickbase_api.models.league_user_data.LeagueUserData" href="models/league_user_data.html#kickbase_api.models.league_user_data.LeagueUserData">LeagueUserData</a>'>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def league_users(self, league: Union[str, LeagueData]) -&gt; [LeagueUserData]:
+    league_id = self._get_league_id(league)
+
+    r = self._do_get(&#34;/leagues/{}/users&#34;.format(league_id), True)
+
+    if r.status_code == 200:
+        return [LeagueUserData(d) for d in r.json()[&#34;users&#34;]]
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.leagues"><code class="name flex">
+<span>def <span class="ident">leagues</span></span>(<span>self) ‑> [<class '<a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>'>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def leagues(self) -&gt; [LeagueData]:
+    r =  self._do_get(&#34;/leagues/&#34;, True)
+
+    if r.status_code == 200:
+        j = r.json()
+        return [LeagueData(d) for d in j[&#34;leagues&#34;]]
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.line_up"><code class="name flex">
+<span>def <span class="ident">line_up</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>]) ‑> <a title="kickbase_api.models.lineup.LineUp" href="models/lineup.html#kickbase_api.models.lineup.LineUp">LineUp</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def line_up(self, league: Union[str, LeagueData]) -&gt; LineUp:
+    league_id = self._get_league_id(league)
+
+    r = self._do_get(&#34;/leagues/{}/lineup&#34;.format(league_id), True)
+
+    if r.status_code == 200:
+        return LineUp(r.json())
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.login"><code class="name flex">
+<span>def <span class="ident">login</span></span>(<span>self, username: str, password: str) ‑> (<class '<a title="kickbase_api.models.user.User" href="models/user.html#kickbase_api.models.user.User">User</a>'>, [<class '<a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>'>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def login(self, username: str, password: str) -&gt; (User, [LeagueData]):
+    data = {
+        &#34;email&#34;: username,
+        &#34;password&#34;: password,
+        &#34;ext&#34;: False
+    }
+
+    r = self._do_post(&#34;/user/login&#34;, data, False)
+
+    if r.status_code == 200:
+        j = r.json()
+        self.token = j[&#34;token&#34;]
+        self.token_expire = parse_date(j[&#34;tokenExp&#34;])
+
+        self._username = username
+        self._password = password
+
+        user = User(j[&#34;user&#34;])
+        league_data = [LeagueData(d) for d in j[&#34;leagues&#34;]]
+        return user, league_data
+
+    elif r.status_code == 401:
+        raise KickbaseLoginException()
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.make_offer"><code class="name flex">
+<span>def <span class="ident">make_offer</span></span>(<span>self, price: int, player: Union[str, <a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>, <a title="kickbase_api.models.market_player.MarketPlayer" href="models/market_player.html#kickbase_api.models.market_player.MarketPlayer">MarketPlayer</a>], league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_offer(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+    player_id = self._get_player_id(player)
+    league_id = self._get_league_id(league)
+
+    data = {
+        &#34;price&#34;: price
+    }
+
+    r = self._do_post(&#34;/leagues/{}/market/{}/offers&#34;.format(league_id, player_id), data, True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.market"><code class="name flex">
+<span>def <span class="ident">market</span></span>(<span>self, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>]) ‑> <a title="kickbase_api.models.market.Market" href="models/market.html#kickbase_api.models.market.Market">Market</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def market(self, league: Union[str, LeagueData]) -&gt; Market:
+    league_id = self._get_league_id(league)
+
+    r = self._do_get(&#34;/leagues/{}/market&#34;.format(league_id), True)
+
+    if r.status_code == 200:
+        return Market(r.json())
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.post_feed_comment"><code class="name flex">
+<span>def <span class="ident">post_feed_comment</span></span>(<span>self, comment: str, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>], feed_item: Union[str, <a title="kickbase_api.models.feed_item.FeedItem" href="models/feed_item.html#kickbase_api.models.feed_item.FeedItem">FeedItem</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def post_feed_comment(self, comment: str, league: Union[str, LeagueData], feed_item: Union[str, FeedItem]):
+    league_id = self._get_league_id(league)
+    feed_item_id = self._get_feed_item_id(feed_item)
+
+    data = {
+        &#34;comment&#34;: comment
+    }
+
+    r = self._do_post(&#34;/leagues/{}/feed/{}/comments&#34;.format(league_id, feed_item_id), data, True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.post_feed_item"><code class="name flex">
+<span>def <span class="ident">post_feed_item</span></span>(<span>self, comment: str, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def post_feed_item(self, comment: str, league: Union[str, LeagueData]):
+    league_id = self._get_league_id(league)
+
+    data = {
+        &#34;comment&#34;: comment
+    }
+
+    r = self._do_post(&#34;/leagues/{}/feed&#34;.format(league_id), data, True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.remove_from_market"><code class="name flex">
+<span>def <span class="ident">remove_from_market</span></span>(<span>self, player: Union[str, <a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>, <a title="kickbase_api.models.market_player.MarketPlayer" href="models/market_player.html#kickbase_api.models.market_player.MarketPlayer">MarketPlayer</a>], league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_from_market(self, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+    player_id = self._get_player_id(player)
+    league_id = self._get_league_id(league)
+
+    r = self._do_delete(&#34;/leagues/{}/market/{}&#34;.format(league_id, player_id), True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.remove_offer"><code class="name flex">
+<span>def <span class="ident">remove_offer</span></span>(<span>self, offer_id: str, player: Union[str, <a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>, <a title="kickbase_api.models.market_player.MarketPlayer" href="models/market_player.html#kickbase_api.models.market_player.MarketPlayer">MarketPlayer</a>], league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_offer(self, offer_id: str, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+    player_id = self._get_player_id(player)
+    league_id = self._get_league_id(league)
+
+    r = self._do_delete(&#34;/leagues/{}/market/{}/offers/{}&#34;.format(league_id, player_id, offer_id), True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.search_player"><code class="name flex">
+<span>def <span class="ident">search_player</span></span>(<span>self, search_query: str) ‑> [<class '<a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>'>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search_player(self, search_query: str) -&gt; [Player]:
+    r = self._do_get(&#34;/competition/search?t={}&#34;.format(search_query))
+
+    if r.status_code == 200:
+        return [Player(v) for v in r.json()[&#34;p&#34;]]
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.set_line_up"><code class="name flex">
+<span>def <span class="ident">set_line_up</span></span>(<span>self, line_up: <a title="kickbase_api.models.lineup.LineUp" href="models/lineup.html#kickbase_api.models.lineup.LineUp">LineUp</a>, league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>]) ‑> <a title="kickbase_api.models.lineup.LineUp" href="models/lineup.html#kickbase_api.models.lineup.LineUp">LineUp</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_line_up(self, line_up: LineUp, league: Union[str, LeagueData]) -&gt; LineUp:
+    league_id = self._get_league_id(league)
+
+    if not self._is_token_valid:
+        self.login(self._username, self._password)
+
+    data = {
+        &#34;type&#34;: line_up.type,
+        &#34;players&#34;: line_up.players
+    }
+
+    r = self._do_post(&#34;/leagues/{}/lineup&#34;.format(league_id), data, True)
+
+    if r.status_code == 200:
+        return LineUp(r.json())
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.team_players"><code class="name flex">
+<span>def <span class="ident">team_players</span></span>(<span>self, team_id: str) ‑> [<class '<a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>'>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def team_players(self, team_id: str) -&gt; [Player]:
+    r = self._do_get(&#34;/competition/teams/{}/players&#34;.format(team_id))
+
+    if r.status_code == 200:
+        return [Player(v) for v in r.json()[&#34;p&#34;]]
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.top_25_players"><code class="name flex">
+<span>def <span class="ident">top_25_players</span></span>(<span>self) ‑> [<class '<a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>'>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def top_25_players(self) -&gt; [Player]:
+    r = self._do_get(&#34;/competition/best?position=0&#34;)
+
+    if r.status_code == 200:
+        return [Player(v) for v in r.json()[&#34;p&#34;]]
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+<dt id="kickbase_api.kickbase.Kickbase.update_price"><code class="name flex">
+<span>def <span class="ident">update_price</span></span>(<span>self, price: int, player: Union[str, <a title="kickbase_api.models.player.Player" href="models/player.html#kickbase_api.models.player.Player">Player</a>, <a title="kickbase_api.models.market_player.MarketPlayer" href="models/market_player.html#kickbase_api.models.market_player.MarketPlayer">MarketPlayer</a>], league: Union[str, <a title="kickbase_api.models.league_data.LeagueData" href="models/league_data.html#kickbase_api.models.league_data.LeagueData">LeagueData</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_price(self, price: int, player: Union[str, Player, MarketPlayer], league: Union[str, LeagueData]):
+    player_id = self._get_player_id(player)
+    league_id = self._get_league_id(league)
+
+    data = {
+        &#34;price&#34;: price
+    }
+
+    r = self._do_put(&#34;/leagues/{}/market/{}&#34;.format(league_id, player_id), data, True)
+
+    if r.status_code == 200:
+        return
+    else:
+        raise KickbaseException()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="kickbase_api" href="index.html">kickbase_api</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="kickbase_api.kickbase.Kickbase" href="#kickbase_api.kickbase.Kickbase">Kickbase</a></code></h4>
+<ul class="">
+<li><code><a title="kickbase_api.kickbase.Kickbase.accept_offer" href="#kickbase_api.kickbase.Kickbase.accept_offer">accept_offer</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.add_to_market" href="#kickbase_api.kickbase.Kickbase.add_to_market">add_to_market</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.base_url" href="#kickbase_api.kickbase.Kickbase.base_url">base_url</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.decline_offer" href="#kickbase_api.kickbase.Kickbase.decline_offer">decline_offer</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_feed" href="#kickbase_api.kickbase.Kickbase.league_feed">league_feed</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_feed_comments" href="#kickbase_api.kickbase.Kickbase.league_feed_comments">league_feed_comments</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_info" href="#kickbase_api.kickbase.Kickbase.league_info">league_info</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_me" href="#kickbase_api.kickbase.Kickbase.league_me">league_me</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_stats" href="#kickbase_api.kickbase.Kickbase.league_stats">league_stats</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_user_players" href="#kickbase_api.kickbase.Kickbase.league_user_players">league_user_players</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_user_profile" href="#kickbase_api.kickbase.Kickbase.league_user_profile">league_user_profile</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_user_stats" href="#kickbase_api.kickbase.Kickbase.league_user_stats">league_user_stats</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.league_users" href="#kickbase_api.kickbase.Kickbase.league_users">league_users</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.leagues" href="#kickbase_api.kickbase.Kickbase.leagues">leagues</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.line_up" href="#kickbase_api.kickbase.Kickbase.line_up">line_up</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.login" href="#kickbase_api.kickbase.Kickbase.login">login</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.make_offer" href="#kickbase_api.kickbase.Kickbase.make_offer">make_offer</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.market" href="#kickbase_api.kickbase.Kickbase.market">market</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.post_feed_comment" href="#kickbase_api.kickbase.Kickbase.post_feed_comment">post_feed_comment</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.post_feed_item" href="#kickbase_api.kickbase.Kickbase.post_feed_item">post_feed_item</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.remove_from_market" href="#kickbase_api.kickbase.Kickbase.remove_from_market">remove_from_market</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.remove_offer" href="#kickbase_api.kickbase.Kickbase.remove_offer">remove_offer</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.search_player" href="#kickbase_api.kickbase.Kickbase.search_player">search_player</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.set_line_up" href="#kickbase_api.kickbase.Kickbase.set_line_up">set_line_up</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.team_players" href="#kickbase_api.kickbase.Kickbase.team_players">team_players</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.token" href="#kickbase_api.kickbase.Kickbase.token">token</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.token_expire" href="#kickbase_api.kickbase.Kickbase.token_expire">token_expire</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.top_25_players" href="#kickbase_api.kickbase.Kickbase.top_25_players">top_25_players</a></code></li>
+<li><code><a title="kickbase_api.kickbase.Kickbase.update_price" href="#kickbase_api.kickbase.Kickbase.update_price">update_price</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.4</a>.</p>
+</footer>
+</body>
+</html>
