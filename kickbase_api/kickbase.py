@@ -8,6 +8,7 @@ from kickbase_api.exceptions import KickbaseLoginException, KickbaseException
 from kickbase_api.models._transforms import parse_date
 from kickbase_api.models.feed_item import FeedItem
 from kickbase_api.models.feed_item_comment import FeedItemComment
+from kickbase_api.models.gift import Gift
 from kickbase_api.models.league_data import LeagueData
 from kickbase_api.models.league_info import LeagueInfo
 from kickbase_api.models.league_me import LeagueMe
@@ -196,7 +197,29 @@ class Kickbase:
             return [Player(v) for v in r.json()["players"]]
         else:
             raise KickbaseException()
+        
+    def league_collect_gift(self, league: Union[str, LeagueData]) -> True:
+        league_id = self._get_league_id(league)
 
+        r = self._do_post("/leagues/{}/collectgift".format(league_id), {}, True)
+
+        if r.status_code == 200:
+            return True
+        elif r.status_code == 400:
+            return False
+        else:
+            raise KickbaseException()
+
+    def league_current_gift(self, league: Union[str, LeagueData]) -> Gift:
+        league_id = self._get_league_id(league)
+
+        r = self._do_get("/leagues/{}/currentgift".format(league_id), True)
+
+        if r.status_code == 200:
+            return Gift(r.json())
+        else:
+            raise KickbaseException()
+        
     def search_player(self, search_query: str) -> [Player]:
         r = self._do_get("/competition/search?t={}".format(search_query))
 

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='Kickbase_API',
-    version='0.0.2',
+    version='0.0.3',
     packages=['kickbase_api', 'kickbase_api.models', 'kickbase_api.models.response'],
     url='https://github.com/kevinskyba/kickbase-api-python',
     license='MIT',

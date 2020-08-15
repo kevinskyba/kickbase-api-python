@@ -91,8 +91,13 @@ def test_league_user_players_match_day(logged_in_kickbase):
     kickbase, user, leagues = logged_in_kickbase
     players = kickbase.league_user_players(leagues[0], user, 1)
     assert players is not None
-    
-    
+
+@pytest.mark.online
+def test_league_user_players_match_day(logged_in_kickbase):
+    kickbase, user, leagues = logged_in_kickbase
+    gift = kickbase.league_current_gift(leagues[0])
+    assert gift is not None
+
 @pytest.mark.online
 def test_search_player(logged_in_kickbase):
     kickbase, user, leagues = logged_in_kickbase
