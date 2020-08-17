@@ -1,12 +1,12 @@
 from datetime import datetime
-from enum import Enum
+from enum import IntEnum
 
 from kickbase_api.models._transforms import parse_date
 from kickbase_api.models.base_model import BaseModel
 from kickbase_api.models.feed_meta import FeedMeta
 
 
-class FeedType(Enum):
+class FeedType(IntEnum):
     BUY = 12
     FEED_AD_BANNER = 15
     FEED_COMMENT = 14

@@ -1,11 +1,9 @@
 from datetime import datetime
-from enum import Enum
 
 from kickbase_api.models._transforms import parse_date
 from kickbase_api.models.base_model import BaseModel
-from kickbase_api.models.feed_meta import FeedMeta
 from kickbase_api.models.market_player_offer import MarketPlayerOffer
-from kickbase_api.models.player import Player, _map_player_position, _map_player_status, PlayerPosition, PlayerStatus
+from kickbase_api.models.player import _map_player_position, _map_player_status, PlayerPosition, PlayerStatus
 
 
 class MarketPlayer(BaseModel):

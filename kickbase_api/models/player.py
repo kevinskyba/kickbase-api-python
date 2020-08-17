@@ -1,12 +1,9 @@
-from datetime import datetime
-from enum import Enum
+from enum import IntEnum
 
-from kickbase_api.models._transforms import parse_date
 from kickbase_api.models.base_model import BaseModel
-from kickbase_api.models.feed_meta import FeedMeta
 
 
-class PlayerStatus(Enum):
+class PlayerStatus(IntEnum):
     NONE = 0
     INJURED = 1
     STRICKEN = 2
@@ -27,7 +24,7 @@ def _map_player_status(v):
         return PlayerStatus.UNKNOWN
 
 
-class PlayerPosition(Enum):
+class PlayerPosition(IntEnum):
     GOAL_KEEPER = 1
     DEFENDER = 2
     MIDFIELDER = 3
