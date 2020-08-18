@@ -12,6 +12,8 @@ def test_login():
     assert kickbase._is_token_valid()
     assert user is not None
     assert leagues is not None
+    
+    kickbase.post_chat_message("..", leagues[1])
 
 
 @pytest.mark.online
@@ -131,3 +133,10 @@ def test_market(logged_in_kickbase):
     kickbase, user, leagues = logged_in_kickbase
     market = kickbase.market(leagues[0])
     assert market is not None
+
+
+@pytest.mark.online
+def test_chat_messages(logged_in_kickbase):
+    kickbase, user, leagues = logged_in_kickbase
+    chat_messages = kickbase.chat_messages(leagues[0])
+    assert chat_messages is not None
