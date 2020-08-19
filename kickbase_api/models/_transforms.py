@@ -4,7 +4,10 @@ from typing import Callable
 
 
 def parse_date(s: str) -> datetime:
-    return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S%z")
+    try:
+        return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S%z")
+    except:
+        return datetime.strptime(s+"+0000", "%Y-%m-%dT%H:%M:%S%z")
 
 
 def date_to_string(d: datetime) -> str:
