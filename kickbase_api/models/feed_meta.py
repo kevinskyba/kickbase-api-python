@@ -12,10 +12,13 @@ class FeedMeta(BaseModel):
     buyer_name: str = None
     buy_price: int = None
     
-    sell_price: int = None
+    seller_picture: str = None
+    seller_id: str = None
     seller_name: str = None
+    sell_price: int = None
     
     player_id: str = None
+    player_first_name: str = None
     player_last_name: str = None
     player_known_name: str = None
     
@@ -103,11 +106,13 @@ class FeedMeta(BaseModel):
             "pd": "defenders_points",
             "pm": "midfielders_points",
             "pf": "forwarders_points",
+            "pfn": "player_first_name",
             "pt": "total_points",
             "uid": "user_id",
             "un": "user_name",
             "ui": "user_picture_path",
             "s": "status_message",
+            "sid": "seller_id",
             "n": "news"
         }
         
