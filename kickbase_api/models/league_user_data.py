@@ -13,7 +13,7 @@ class LeagueUserData(BaseModel):
     status: int = None
     perms: [int] = None
     
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
         }
         self._json_mapping = {

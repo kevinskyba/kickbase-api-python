@@ -26,7 +26,7 @@ class LeagueData(BaseModel):
     
     image_path: str = None
     
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
             "creation": parse_date
         }

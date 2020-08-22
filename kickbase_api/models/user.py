@@ -8,7 +8,7 @@ class User(BaseModel):
     notifications: int = None
     profile_image_path: str = None
     
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_mapping = {
             "profile": "profile_image_path"
         }

@@ -51,7 +51,7 @@ class FeedItem(BaseModel):
     meta: FeedMeta = None
     season_id: int = None
 
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
             "date": parse_date,
             "meta": FeedMeta,

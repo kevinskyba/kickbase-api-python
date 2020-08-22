@@ -6,7 +6,7 @@ class Market(BaseModel):
     closed: bool = None
     players: [MarketPlayer] = None
     
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
             "players": lambda v: [MarketPlayer(v_) for v_ in v]
         }

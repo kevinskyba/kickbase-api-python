@@ -58,7 +58,7 @@ class Player(BaseModel):
     team_path: str = None
     team_cover_path: str = None
 
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
             "position": _map_player_position,
             "status": _map_player_status

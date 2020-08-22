@@ -6,7 +6,7 @@ class Gift(BaseModel):
     amount: int = None
     level: int = None
     
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_mapping = {
             "isAvailable": "is_available"
         }

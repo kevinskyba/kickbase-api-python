@@ -5,7 +5,7 @@ class BaseModel:
     _json_transform = {
     }
 
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         for key in d.keys():
             value = d[key]
 

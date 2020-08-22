@@ -16,7 +16,7 @@ class LeagueUserProfileSeasonStats(BaseModel):
     
     match_days: [LeagueMatchDayUserStats] = None
    
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
             "matchDays": lambda v: [LeagueMatchDayUserStats(_d) for _d in v]
         }

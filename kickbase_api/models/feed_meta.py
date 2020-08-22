@@ -64,7 +64,7 @@ class FeedMeta(BaseModel):
     
     news: str = None
     
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
         }
         self._json_mapping = {

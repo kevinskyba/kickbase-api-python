@@ -10,7 +10,7 @@ class MarketPlayerOffer(BaseModel):
     date: datetime = None
     valid_until_date: datetime = None
 
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
             "date": parse_date,
             "validUntilDate": parse_date

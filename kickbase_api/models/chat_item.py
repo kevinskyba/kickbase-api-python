@@ -12,7 +12,7 @@ class ChatItem:
     username: str = None
     seen_by: [str] = []
 
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         if "name" in d:
             self.id = d["name"]
         if "fields" in d:

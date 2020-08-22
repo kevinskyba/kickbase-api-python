@@ -17,7 +17,7 @@ class LeagueUserStats(BaseModel):
     seasons: [LeagueUserSeasonStats] = None
     team_values: {datetime: float}
     
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
             "teamValues": parse_key_value_array_to_dict(lambda o: parse_date(o["d"]), lambda o: o["v"]),
             "seasons": lambda v: [LeagueUserSeasonStats(_d) for _d in v]

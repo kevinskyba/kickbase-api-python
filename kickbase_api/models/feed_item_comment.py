@@ -11,7 +11,7 @@ class FeedItemComment(BaseModel):
     user_name: str = None
     user_profile_path: str = None
 
-    def __init__(self, d: dict):
+    def __init__(self, d: dict = {}):
         self._json_transform = {
             "date": parse_date
         }
