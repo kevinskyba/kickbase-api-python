@@ -138,5 +138,5 @@ def test_market(logged_in_kickbase):
 @pytest.mark.online
 def test_chat_messages(logged_in_kickbase):
     kickbase, user, leagues = logged_in_kickbase
-    chat_messages = kickbase.chat_messages(leagues[0])
+    chat_messages, next_page_token = kickbase.chat_messages(leagues[0])
     assert chat_messages is not None

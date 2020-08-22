@@ -423,7 +423,7 @@ class Kickbase:
         token = self.chat_token()
         self.exchange_custom_token(token)
 
-    def chat_messages(self, league: Union[str, LeagueData]) -> [ChatItem]:
+    def chat_messages(self, league: Union[str, LeagueData], page_size: int = 30, next_page_token: str = None) -> ([ChatItem], str):
         if self.google_identity_toolkit_api_key is None:
             return []
         
@@ -440,13 +440,18 @@ class Kickbase:
             "Accept": "application/json",
             "Authorization": "Bearer {}".format(self.firebase_token)
         }
-        
-        r = requests.get(self._url_for_firestore("/chat/{}/messages".format(league_id)), headers=headers)
+        if next_page_token is None:
+            r = requests.get(self._url_for_firestore("/chat/{}/messages?pageSize={}".format(league_id, page_size)), headers=headers)
+        else:
+            r = requests.get(self._url_for_firestore("/chat/{}/messages?pageSize={}&pageToken={}".format(league_id, page_size, next_page_token)), headers=headers)
 
         if r.status_code == 200:
             j = r.json()
             docs = j["documents"]
-            return [ChatItem(d) for d in docs]
+            npt = None
+            if "nextPageToken" in j:
+                npt = j["nextPageToken"]
+            return [ChatItem(d) for d in docs], npt
         else:
             raise KickbaseException()
 
