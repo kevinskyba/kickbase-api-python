@@ -20,6 +20,7 @@ from kickbase_api.models.lineup import LineUp
 from kickbase_api.models.market import Market
 from kickbase_api.models.market_player import MarketPlayer
 from kickbase_api.models.player import Player
+from kickbase_api.models.player_stats import PlayerStats
 from kickbase_api.models.response.league_stats_response import LeagueStatsResponse
 from kickbase_api.models.user import User
 
@@ -222,7 +223,7 @@ class Kickbase:
             return PlayerStats(r.json()) 
         else:
             raise KickbaseException()
-        
+
     def league_collect_gift(self, league: Union[str, LeagueData]) -> True:
         league_id = self._get_league_id(league)
 
