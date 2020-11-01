@@ -89,6 +89,13 @@ def test_league_user_players(logged_in_kickbase):
 
 
 @pytest.mark.online
+def test_league_user_player_stats(logged_in_kickbase):
+    kickbase, user, leagues = logged_in_kickbase
+    stats = kickbase.league_user_player_stats(leagues[0], "44")
+    assert stats is not None
+
+
+@pytest.mark.online
 def test_league_user_players_match_day(logged_in_kickbase):
     kickbase, user, leagues = logged_in_kickbase
     players = kickbase.league_user_players(leagues[0], user, 1)

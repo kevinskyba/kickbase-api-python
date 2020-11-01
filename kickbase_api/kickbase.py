@@ -212,15 +212,14 @@ class Kickbase:
         else:
             raise KickbaseException()
 
-
-    def league_user_players_stats(self, league: Union[str, LeagueData], player: Union[str, Player]) -> PlayerStats:
-            league_id = self._get_league_id(league)
+    def league_user_player_stats(self, league: Union[str, LeagueData], player: Union[str, Player]) -> PlayerStats:
+        league_id = self._get_league_id(league)
         player_id = self._get_player_id(player)
 
         r = self._do_get("/leagues/{}/players/{}/stats".format(league_id, player_id), True)
 
         if r.status_code == 200:
-            return PlayerStats(r.json()) 
+            return PlayerStats(r.json()["leaguePlayer"])
         else:
             raise KickbaseException()
 
@@ -415,31 +414,33 @@ class Kickbase:
             "Content-Type": "application/json",
             "Accept": "application/json"
         }
-        
+
         data = {
             "returnSecureToken": True,
             "token": chat_token
         }
 
         r = requests.post(self._url_for_google_identity_toolkit(
-            "/v3/relyingparty/verifyCustomToken?key={}".format(self.google_identity_toolkit_api_key)), data=json.dumps(data),
+            "/v3/relyingparty/verifyCustomToken?key={}".format(self.google_identity_toolkit_api_key)),
+            data=json.dumps(data),
             headers=headers)
-        
+
         if r.status_code == 200:
             j = r.json()
             self.firebase_token = j["idToken"]
             self.firebase_token_expire = datetime.now(timezone.utc) + timedelta(seconds=int(j["expiresIn"]))
         else:
             raise KickbaseException("There was an error exchanging custom token for firebase token")
-        
+
     def _update_firebase_token(self):
         token = self.chat_token()
         self.exchange_custom_token(token)
 
-    def chat_messages(self, league: Union[str, LeagueData], page_size: int = 30, next_page_token: str = None) -> ([ChatItem], str):
+    def chat_messages(self, league: Union[str, LeagueData], page_size: int = 30, next_page_token: str = None) -> (
+    [ChatItem], str):
         if self.google_identity_toolkit_api_key is None:
             return []
-        
+
         league_id = self._get_league_id(league)
 
         if not self._is_token_valid():
@@ -454,9 +455,12 @@ class Kickbase:
             "Authorization": "Bearer {}".format(self.firebase_token)
         }
         if next_page_token is None:
-            r = requests.get(self._url_for_firestore("/chat/{}/messages?pageSize={}".format(league_id, page_size)), headers=headers)
+            r = requests.get(self._url_for_firestore("/chat/{}/messages?pageSize={}".format(league_id, page_size)),
+                             headers=headers)
         else:
-            r = requests.get(self._url_for_firestore("/chat/{}/messages?pageSize={}&pageToken={}".format(league_id, page_size, next_page_token)), headers=headers)
+            r = requests.get(self._url_for_firestore(
+                "/chat/{}/messages?pageSize={}&pageToken={}".format(league_id, page_size, next_page_token)),
+                             headers=headers)
 
         if r.status_code == 200:
             j = r.json()
@@ -471,7 +475,7 @@ class Kickbase:
     def post_chat_message(self, message: str, league: Union[str, LeagueData]):
         if self.google_identity_toolkit_api_key is None:
             return
-        
+
         league_id = self._get_league_id(league)
 
         if not self._is_token_valid():
@@ -485,7 +489,7 @@ class Kickbase:
             "Accept": "application/json",
             "Authorization": "Bearer {}".format(self.firebase_token)
         }
-        
+
         data = {
             "fields": {
                 "userId": {
@@ -513,7 +517,7 @@ class Kickbase:
             }
         }
 
-        r = requests.post(self._url_for_firestore("/chat/{}/messages".format(league_id)), 
+        r = requests.post(self._url_for_firestore("/chat/{}/messages".format(league_id)),
                           data=json.dumps(data), headers=headers)
 
         if r.status_code == 200:
@@ -565,7 +569,7 @@ class Kickbase:
         return "kkstrauth={}".format(self.token)
 
     def _do_get(self, endpoint: str, authenticated: bool = False):
-        if authenticated and  not self._is_token_valid():
+        if authenticated and not self._is_token_valid():
             self.login(self._username, self._password)
 
         headers = {
@@ -591,7 +595,7 @@ class Kickbase:
         return requests.post(self._url_for_endpoint(endpoint), data=json.dumps(data), headers=headers)
 
     def _do_put(self, endpoint: str, data: dict, authenticated: bool = False):
-        if authenticated and  not self._is_token_valid():
+        if authenticated and not self._is_token_valid():
             self.login(self._username, self._password)
 
         headers = {
@@ -604,7 +608,7 @@ class Kickbase:
         return requests.put(self._url_for_endpoint(endpoint), data=json.dumps(data), headers=headers)
 
     def _do_delete(self, endpoint: str, authenticated: bool = False):
-        if authenticated and  not self._is_token_valid():
+        if authenticated and not self._is_token_valid():
             self.login(self._username, self._password)
 
         headers = {
