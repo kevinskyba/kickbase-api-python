@@ -211,6 +211,18 @@ class Kickbase:
         else:
             raise KickbaseException()
 
+
+    def league_user_players_stats(self, league: Union[str, LeagueData], player: Union[str, Player]) -> PlayerStats:
+            league_id = self._get_league_id(league)
+        player_id = self._get_player_id(player)
+
+        r = self._do_get("/leagues/{}/players/{}/stats".format(league_id, player_id), True)
+
+        if r.status_code == 200:
+            return PlayerStats(r.json()) 
+        else:
+            raise KickbaseException()
+        
     def league_collect_gift(self, league: Union[str, LeagueData]) -> True:
         league_id = self._get_league_id(league)
 
