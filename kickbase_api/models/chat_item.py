@@ -2,6 +2,7 @@ from datetime import datetime
 
 from kickbase_api.models._transforms import parse_date
 
+from typing import List
 
 class ChatItem:
     id: str = None
@@ -10,7 +11,7 @@ class ChatItem:
     date: datetime = None
     user_id: str = None
     username: str = None
-    seen_by: [str] = []
+    seen_by: List[str] = []
 
     def __init__(self, d: dict = {}):
         if "name" in d:

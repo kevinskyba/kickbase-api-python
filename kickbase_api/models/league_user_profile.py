@@ -4,10 +4,11 @@ from kickbase_api.models._transforms import parse_date, parse_key_value_array_to
 from kickbase_api.models.base_model import BaseModel
 from kickbase_api.models.league_user_profile_season_stats import LeagueUserProfileSeasonStats
 
+from typing import List, Dict
 
 class LeagueUserProfile(BaseModel):
     flags: int = None
-    perms: [int] = None
+    perms: List[int] = None
     level_achieved: int = None
     current_season_id: int = None
     placement: int = None
@@ -22,8 +23,8 @@ class LeagueUserProfile(BaseModel):
     sold: int = None
     highest_team_value: float = None
     
-    seasons: [LeagueUserProfileSeasonStats] = None
-    team_values: {datetime: float}
+    seasons: List[LeagueUserProfileSeasonStats] = None
+    team_values: Dict[datetime, float]
     
     def __init__(self, d: dict = {}):
         self._json_transform = {

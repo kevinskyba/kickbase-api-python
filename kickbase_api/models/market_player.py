@@ -5,6 +5,8 @@ from kickbase_api.models.base_model import BaseModel
 from kickbase_api.models.market_player_offer import MarketPlayerOffer
 from kickbase_api.models.player import _map_player_position, _map_player_status, PlayerPosition, PlayerStatus
 
+from typing import List
+
 
 class MarketPlayer(BaseModel):
     id: str = None
@@ -32,7 +34,7 @@ class MarketPlayer(BaseModel):
     expiry: int = None
     lus: int = None
     
-    offers: [MarketPlayerOffer] = None
+    offers: List[MarketPlayerOffer] = None
     
     def __init__(self, d: dict = {}):
         self._json_transform = {

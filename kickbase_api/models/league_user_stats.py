@@ -4,6 +4,7 @@ from kickbase_api.models._transforms import parse_date, parse_key_value_array_to
 from kickbase_api.models.base_model import BaseModel
 from kickbase_api.models.league_user_season_stats import LeagueUserSeasonStats
 
+from typing import List, Dict
 
 class LeagueUserStats(BaseModel):
     name: str = None
@@ -14,8 +15,8 @@ class LeagueUserStats(BaseModel):
     points: int = None
     team_value: float = None
     
-    seasons: [LeagueUserSeasonStats] = None
-    team_values: {datetime: float}
+    seasons: List[LeagueUserSeasonStats] = None
+    team_values: Dict[datetime, float]
     
     def __init__(self, d: dict = {}):
         self._json_transform = {

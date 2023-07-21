@@ -4,6 +4,7 @@ from kickbase_api.models._transforms import parse_date, parse_key_value_array_to
 from kickbase_api.models.base_model import BaseModel
 from kickbase_api.models.league_match_day_user_stats import LeagueMatchDayUserStats
 
+from typing import List
 
 class LeagueUserProfileSeasonStats(BaseModel):
     season_id: str = None
@@ -14,7 +15,7 @@ class LeagueUserProfileSeasonStats(BaseModel):
     max_points: int = None    
     wins: int = None
     
-    match_days: [LeagueMatchDayUserStats] = None
+    match_days: List[LeagueMatchDayUserStats] = None
    
     def __init__(self, d: dict = {}):
         self._json_transform = {
