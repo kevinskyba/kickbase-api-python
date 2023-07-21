@@ -23,6 +23,7 @@ from kickbase_api.models.player import Player
 from kickbase_api.models.response.league_stats_response import LeagueStatsResponse
 from kickbase_api.models.user import User
 
+from typing import List, Tuple
 
 class Kickbase:
     base_url: str = None
@@ -41,7 +42,7 @@ class Kickbase:
         self.firestore_project = firestore_project
         self.google_identity_toolkit_api_key = google_identity_toolkit_api_key
 
-    def login(self, username: str, password: str) -> (User, [LeagueData]):
+    def login(self, username: str, password: str) -> Tuple(User, List[LeagueData]):
         data = {
             "email": username,
             "password": password,
@@ -77,7 +78,7 @@ class Kickbase:
             return False
         return self.firebase_token_expire > datetime.now(timezone.utc) - timedelta(minutes=5)
 
-    def leagues(self) -> [LeagueData]:
+    def leagues(self) -> List[LeagueData]:
         r = self._do_get("/leagues/", True)
 
         if r.status_code == 200:
@@ -116,7 +117,7 @@ class Kickbase:
         else:
             raise KickbaseException()
 
-    def league_users(self, league: Union[str, LeagueData]) -> [LeagueUserData]:
+    def league_users(self, league: Union[str, LeagueData]) -> List[LeagueUserData]:
         league_id = self._get_league_id(league)
 
         r = self._do_get("/leagues/{}/users".format(league_id), True)
@@ -148,7 +149,7 @@ class Kickbase:
         else:
             raise KickbaseException()
 
-    def league_feed(self, start_index: int, league: Union[str, LeagueData]) -> [FeedItem]:
+    def league_feed(self, start_index: int, league: Union[str, LeagueData]) -> List[FeedItem]:
         league_id = self._get_league_id(league)
 
         r = self._do_get("/leagues/{}/feed?start={}".format(league_id, start_index), True)
@@ -172,8 +173,7 @@ class Kickbase:
         else:
             raise KickbaseException()
 
-    def league_feed_comments(self, league: Union[str, LeagueData], feed_item: Union[str, FeedItem]) -> [
-        FeedItemComment]:
+    def league_feed_comments(self, league: Union[str, LeagueData], feed_item: Union[str, FeedItem]) -> List[FeedItemComment]:
         league_id = self._get_league_id(league)
         feed_item_id = self._get_feed_item_id(feed_item)
 
@@ -199,8 +199,7 @@ class Kickbase:
         else:
             raise KickbaseException()
 
-    def league_user_players(self, league: Union[str, LeagueData], user: Union[str, User], match_day: int = 0) -> [
-        Player]:
+    def league_user_players(self, league: Union[str, LeagueData], user: Union[str, User], match_day: int = 0) -> List[Player]:
         league_id = self._get_league_id(league)
         user_id = self._get_user_id(user)
 
@@ -233,7 +232,7 @@ class Kickbase:
         else:
             raise KickbaseException()
 
-    def search_player(self, search_query: str) -> [Player]:
+    def search_player(self, search_query: str) -> List[Player]:
         r = self._do_get("/competition/search?t={}".format(search_query))
 
         if r.status_code == 200:
@@ -241,7 +240,7 @@ class Kickbase:
         else:
             raise KickbaseException()
 
-    def team_players(self, team_id: str) -> [Player]:
+    def team_players(self, team_id: str) -> List[Player]:
         r = self._do_get("/competition/teams/{}/players".format(team_id))
 
         if r.status_code == 200:
@@ -249,7 +248,7 @@ class Kickbase:
         else:
             raise KickbaseException()
 
-    def top_25_players(self) -> [Player]:
+    def top_25_players(self) -> List[Player]:
         r = self._do_get("/competition/best?position=0")
 
         if r.status_code == 200:
@@ -423,7 +422,7 @@ class Kickbase:
         token = self.chat_token()
         self.exchange_custom_token(token)
 
-    def chat_messages(self, league: Union[str, LeagueData], page_size: int = 30, next_page_token: str = None) -> ([ChatItem], str):
+    def chat_messages(self, league: Union[str, LeagueData], page_size: int = 30, next_page_token: str = None) -> Tuple(List[ChatItem], str):
         if self.google_identity_toolkit_api_key is None:
             return []
         
