@@ -1,10 +1,11 @@
 from kickbase_api.models.league_match_day_stats_data import LeagueMatchDayStatsData
 
+from typing import List, Dict
 
 class LeagueStatsResponse:
     
     current_day: int = None
-    match_days: {int: [LeagueMatchDayStatsData]} = {}
+    match_days: Dict[int, List[LeagueMatchDayStatsData]] = {}
 
     def __init__(self, d: dict):
         self.current_day = d["currentDay"]

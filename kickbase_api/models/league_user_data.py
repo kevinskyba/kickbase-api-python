@@ -3,6 +3,7 @@ from datetime import datetime
 from kickbase_api.models._transforms import parse_date
 from kickbase_api.models.base_model import BaseModel
 
+from typing import List
 
 class LeagueUserData(BaseModel):
     id: str = None
@@ -11,7 +12,7 @@ class LeagueUserData(BaseModel):
     profile_image_path: str = None
     cover_image_path: str = None
     status: int = None
-    perms: [int] = None
+    perms: List[int] = None
     
     def __init__(self, d: dict = {}):
         self._json_transform = {
